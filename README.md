@@ -11,7 +11,7 @@
 
 > CLI tool to generate Typescript Definitions from your Appwrite Collections.
 
-### 🏠 [Homepage](https://appwrite.io)
+*This is work in progress*
 
 ## Install
 
