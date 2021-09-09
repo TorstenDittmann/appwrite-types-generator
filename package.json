@@ -11,11 +11,11 @@
   "bin": {
     "aw-types": "./index.js"
   },
-	"author": {
-		"name": "Torsten Dittmann",
-		"email": "torsten@appwrite.io",
-		"url": "https://appwrite.io"
-	},
+  "author": {
+    "name": "Torsten Dittmann",
+    "email": "torsten@appwrite.io",
+    "url": "https://appwrite.io"
+  },
   "license": "ISC",
   "dependencies": {
     "camelcase": "^6.2.0",

@@ -15,22 +15,31 @@ const database = new Database(client);
 /**
  * To Pascal Case.
  * @param {string} v 
- * @returns 
+ * @returns {string}
  */
 const toPascal = v => camelCase(v, { pascalCase: true });
 
 /**
  * Convert Collection to Typescript type.
  * @param {"text"|"numeric"|"boolean"} type 
- * @returns 
+ * @returns {"string"|"number"|"boolean"}
  */
 const toType = type => ({
     "text": "string",
+    "email": "string",
+    "url": "string",
+    "ip": "string",
+    "wildcard": "string",
     "markdown": "string",
     "numeric": "number",
     "boolean": "boolean"
 }[type]);
 
+/**
+ * Load configuration for Appwrite.
+ * @param {string} file 
+ * @returns {Promise<object>}
+ */
 const loadConfiguration = async file => {
     try {
         if (!existsSync(file)) {
@@ -84,7 +93,7 @@ const generate = async ({ output, config }) => {
             await writeFile(destination, content);
             console.log(`Generated ${destination}`)
         } catch (err) {
-            console.error(err)
+            console.error(err.message)
         }
     });
 }
