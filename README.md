@@ -35,7 +35,7 @@ aw-types -c config.json -o types/
 }
 ```
 
-## Configuration
+## config.json
 
 ```json
 {
