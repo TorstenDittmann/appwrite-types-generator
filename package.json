@@ -1,7 +1,7 @@
 {
   "name": "appwrite-types-generator",
   "version": "0.0.1",
-  "description": "",
+  "description": "CLI tool to generate Typescript Definitions from your Appwrite Collections.",
   "main": "index.js",
   "type": "module",
   "scripts": {
