@@ -2,26 +2,26 @@ import camelCase from "camelcase";
 import {Language} from "./language.js"
 import {AttributeTypes} from "../attributes.js";
 
-export class Kotlin extends Language {
+export class Php extends Language {
 
     getType(type) {
         switch (type) {
             case AttributeTypes.TEXT:
-                return "String";
+                return "string";
             case AttributeTypes.EMAIL:
-                return "String";
+                return "string";
             case AttributeTypes.URL:
-                return "String";
+                return "string";
             case AttributeTypes.IP:
-                return "String";
+                return "string";
             case AttributeTypes.WILDCARD:
-                return "String";
+                return "string";
             case AttributeTypes.MARKDOWN:
-                return "String"
+                return "string"
             case AttributeTypes.NUMERIC:
-                return "Number"
+                return "number"
             case AttributeTypes.BOOLEAN:
-                return "Boolean"
+                return "bool"
         }
     }
 
@@ -30,21 +30,21 @@ export class Kotlin extends Language {
             return "null";
         }
         if (attribute.array) {
-            return `listOf<${this.getType(attribute.type)}>()`;
+            return "[]";
         }
         switch (attribute.type) {
             case AttributeTypes.TEXT:
-                return '""';
+                return "''";
             case AttributeTypes.EMAIL:
-                return '""';
+                return "''";
             case AttributeTypes.URL:
-                return '""';
+                return "''";
             case AttributeTypes.IP:
-                return '""';
+                return "''";
             case AttributeTypes.WILDCARD:
-                return '""';
+                return "''";
             case AttributeTypes.MARKDOWN:
-                return '""';
+                return "''";
             case AttributeTypes.NUMERIC:
                 return "0";
             case AttributeTypes.BOOLEAN:
@@ -53,18 +53,18 @@ export class Kotlin extends Language {
     }
 
     getFileExtension() {
-        return ".kt"
+        return ".php"
     }
 
     getTypeOpenLine(name) {
-        return `data class ${camelCase(name, {pascalCase: true})} (\n`
+        return `<?php\nclass ${camelCase(name, {pascalCase: true})} \n{\n\tpublic function __construct(\n`
     }
 
     getTypePropertyLine(attribute) {
-        return `\t${attribute.name}: ${attribute.array ? "List<" : ""}${this.getType(attribute.type) ?? "Any"}${attribute.array ? ">" : ""}${attribute.required ? "" : "?"}${attribute.required ? "" : ` = ${this.getTypeDefault(attribute)}`},\n`;
+        return `\t\tpublic ${attribute.required ? "" : "?"}${attribute.array ? "array" : this.getType(attribute.type) ?? ""} $${attribute.name}${attribute.required ? "" : ` = ${this.getTypeDefault(attribute)}`},\n`;
     }
 
     getTypeCloseLine() {
-        return ")\n"
+        return "\t)\n}"
     }
 }

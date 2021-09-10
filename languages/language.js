@@ -20,9 +20,10 @@ export class Language {
      * Get this languages type default for the given type.
      *
      * @param type
+     * @param isArray
      * @return {string}
      */
-    getTypeDefault(type) {
+    getTypeDefault(attribute) {
         throw new TypeError("Stub.");
     }
 

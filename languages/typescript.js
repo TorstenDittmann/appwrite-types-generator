@@ -25,7 +25,13 @@ export class Typescript extends Language {
         }
     }
 
-    getTypeDefault(type) {
+    getTypeDefault(attribute) {
+        if (!attribute.required) {
+            return "null";
+        }
+        if (isArray) {
+            return "[]";
+        }
         switch (type) {
             case AttributeTypes.TEXT:
                 return '""';

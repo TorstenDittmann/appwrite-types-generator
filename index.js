@@ -8,13 +8,16 @@ import {mkdir, readFile, writeFile} from "fs/promises";
 import {existsSync} from "fs";
 import {exit} from "process";
 import {Typescript} from "./languages/typescript.js"
+import {Kotlin} from "./languages/kotlin.js"
+import {Php} from "./languages/php.js";
 
 const client = new Client();
 const database = new Database(client);
 
 const languageClasses = {
     "typescript": Typescript,
-    "kotlin": Kotlin
+    "kotlin": Kotlin,
+    "php": Php
 }
 
 /**
