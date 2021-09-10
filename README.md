@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> CLI tool to generate Typescript Definitions from your Appwrite Collections.
+> CLI tool to generate Typescript, Kotlin or PHP Definitions from your Appwrite Collections.
 
 *This is work in progress*
 
@@ -22,7 +22,7 @@ npm i appwrite-types-generator
 ## CLI Usage
 
 ```sh
-aw-types generate -c config.json -o types/
+aw-types generate -c config.json -o types/ -l typescript
 ```
 
 ## package.json
