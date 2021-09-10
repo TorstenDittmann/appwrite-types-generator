@@ -29,10 +29,10 @@ export class Typescript extends Language {
         if (!attribute.required) {
             return "null";
         }
-        if (isArray) {
+        if (attribute.array) {
             return "[]";
         }
-        switch (type) {
+        switch (attribute.type) {
             case AttributeTypes.TEXT:
                 return '""';
             case AttributeTypes.EMAIL:
