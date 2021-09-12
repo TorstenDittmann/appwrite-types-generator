@@ -29,15 +29,10 @@ export class Kotlin extends Language {
         }
         switch (attribute.type) {
             case AttributeTypes.TEXT:
-                return '""';
             case AttributeTypes.EMAIL:
-                return '""';
             case AttributeTypes.URL:
-                return '""';
             case AttributeTypes.IP:
-                return '""';
             case AttributeTypes.WILDCARD:
-                return '""';
             case AttributeTypes.MARKDOWN:
                 return '""';
             case AttributeTypes.NUMERIC:
