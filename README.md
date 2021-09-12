@@ -22,7 +22,7 @@ npm i appwrite-types-generator
 ## CLI Usage
 
 ```sh
-aw-types generate -c config.json -o types/ -l typescript
+aw-types generate -l typescript -c config.json -o types/ 
 ```
 
 ## package.json
@@ -30,7 +30,7 @@ aw-types generate -c config.json -o types/ -l typescript
 ```json
 {
     "scripts": {
-        "types": "aw-types generate -c config.json -o types/"
+        "types": "aw-types generate -l typescript -c config.json -o types/"
     }
 }
 ```
@@ -44,6 +44,11 @@ aw-types generate -c config.json -o types/ -l typescript
     "key": "159b16ec27dcd686ca0927fb4a7e....."
 }
 ```
+
+## Languages
+- typescript
+- kotlin
+- php
 
 ## Author
 
