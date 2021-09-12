@@ -7,15 +7,10 @@ export class Kotlin extends Language {
     getType(type) {
         switch (type) {
             case AttributeTypes.TEXT:
-                return "String";
             case AttributeTypes.EMAIL:
-                return "String";
             case AttributeTypes.URL:
-                return "String";
             case AttributeTypes.IP:
-                return "String";
             case AttributeTypes.WILDCARD:
-                return "String";
             case AttributeTypes.MARKDOWN:
                 return "String"
             case AttributeTypes.NUMERIC:
