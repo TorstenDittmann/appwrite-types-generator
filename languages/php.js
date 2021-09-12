@@ -7,17 +7,12 @@ export class Php extends Language {
     getType(type) {
         switch (type) {
             case AttributeTypes.TEXT:
-                return "string";
             case AttributeTypes.EMAIL:
-                return "string";
             case AttributeTypes.URL:
-                return "string";
             case AttributeTypes.IP:
-                return "string";
             case AttributeTypes.WILDCARD:
-                return "string";
             case AttributeTypes.MARKDOWN:
-                return "string"
+                return "string";
             case AttributeTypes.NUMERIC:
                 return "number"
             case AttributeTypes.BOOLEAN:
