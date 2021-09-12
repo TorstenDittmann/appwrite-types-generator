@@ -49,11 +49,11 @@ const loadConfiguration = async file => {
 const generate = async ({output, config, language}) => {
     await loadConfiguration(config);
 
-    const clazz = languageClasses[language];
-    if (!clazz) {
+    const selectedClass = languageClasses[language];
+    if (!selectedClass) {
         onError(`Language must be one of [${Object.keys(languageClasses)}]`);
     }
-    const lang = new clazz();
+    const lang = new selectedClass();
 
     /** @type {Array<object>} collections*/
     const collections = (await database.listCollections()).collections;
