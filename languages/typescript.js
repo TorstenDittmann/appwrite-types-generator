@@ -1,10 +1,9 @@
-import camelCase from "camelcase";
-import {Language} from "./language.js"
-import {AttributeTypes} from "../attributes.js";
+import { Language } from "./language.js";
+import { AttributeTypes } from "../attributes.js";
+import camelcase from "camelcase";
 
 export class Typescript extends Language {
-
-    getType(type) {
+    static getType(type) {
         switch (type) {
             case AttributeTypes.TEXT:
             case AttributeTypes.EMAIL:
@@ -12,12 +11,16 @@ export class Typescript extends Language {
             case AttributeTypes.IP:
             case AttributeTypes.WILDCARD:
             case AttributeTypes.MARKDOWN:
-                return "string"
+                return "string";
             case AttributeTypes.NUMERIC:
-                return "number"
+                return "number";
             case AttributeTypes.BOOLEAN:
-                return "boolean"
+                return "boolean";
         }
+    }
+
+    static getTypeFormatted(name) {
+        return camelcase(name, {pascalCase: true});
     }
 
     getTypeDefault(attribute) {
@@ -44,17 +47,5 @@ export class Typescript extends Language {
 
     getFileExtension() {
         return ".d.ts";
-    }
-
-    getTypeOpenLine(name) {
-        return `export type ${camelCase(name, {pascalCase: true})} = {\n`;
-    }
-
-    getTypePropertyLine(attribute) {
-        return `\t${attribute.name}${attribute.required ? "" : "?"}: ${this.getType(attribute.type) ?? "unknown"}${attribute.array ? "[]" : ""};\n`;
-    }
-
-    getTypeCloseLine() {
-        return "}\n";
     }
 }

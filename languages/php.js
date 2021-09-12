@@ -1,10 +1,9 @@
-import camelCase from "camelcase";
-import {Language} from "./language.js"
-import {AttributeTypes} from "../attributes.js";
+import { Language } from "./language.js";
+import { AttributeTypes } from "../attributes.js";
+import camelcase from "camelcase";
 
 export class Php extends Language {
-
-    getType(type) {
+    static getType(type) {
         switch (type) {
             case AttributeTypes.TEXT:
             case AttributeTypes.EMAIL:
@@ -14,10 +13,14 @@ export class Php extends Language {
             case AttributeTypes.MARKDOWN:
                 return "string";
             case AttributeTypes.NUMERIC:
-                return "number"
+                return "int";
             case AttributeTypes.BOOLEAN:
-                return "bool"
+                return "bool";
         }
+    }
+
+    static getTypeFormatted(name) {
+        return camelcase(name, {pascalCase: true});
     }
 
     getTypeDefault(attribute) {
@@ -43,18 +46,6 @@ export class Php extends Language {
     }
 
     getFileExtension() {
-        return ".php"
-    }
-
-    getTypeOpenLine(name) {
-        return `<?php\nclass ${camelCase(name, {pascalCase: true})} \n{\n\tpublic function __construct(\n`
-    }
-
-    getTypePropertyLine(attribute) {
-        return `\t\tpublic ${attribute.required ? "" : "?"}${attribute.array ? "array" : this.getType(attribute.type) ?? ""} $${attribute.name}${attribute.required ? "" : ` = ${this.getTypeDefault(attribute)}`},\n`;
-    }
-
-    getTypeCloseLine() {
-        return "\t)\n}"
+        return ".php";
     }
 }

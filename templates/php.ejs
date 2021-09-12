@@ -1,0 +1,12 @@
+<?php
+
+class <%= getTypeFormatted(name) %> 
+{
+    public function __construct(
+    <%_ attributes.forEach(attribute => { _%>
+        public <%_ if (!attribute.required) { _%>?<%_ } _%>
+        <%_ if (attribute.array) { %> <%= 'array' _%>
+        <%_ } else { %> <%= getType(attribute.type) _%><%_ } %> $<%= attribute.name _%>,
+    <%_ }); _%>
+    ) {}
+}

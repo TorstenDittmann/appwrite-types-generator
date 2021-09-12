@@ -19,8 +19,9 @@
   "license": "ISC",
   "dependencies": {
     "camelcase": "^6.2.0",
+    "ejs": "^3.1.6",
     "node-appwrite": "^2.5.0",
-    "yargs": "^17.1.1",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "yargs": "^17.1.1"
   }
 }

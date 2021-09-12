@@ -1,10 +1,9 @@
-import camelCase from "camelcase";
-import {Language} from "./language.js"
-import {AttributeTypes} from "../attributes.js";
+import { Language } from "./language.js";
+import { AttributeTypes } from "../attributes.js";
+import camelcase from "camelcase";
 
 export class Kotlin extends Language {
-
-    getType(type) {
+    static getType(type) {
         switch (type) {
             case AttributeTypes.TEXT:
             case AttributeTypes.EMAIL:
@@ -12,12 +11,16 @@ export class Kotlin extends Language {
             case AttributeTypes.IP:
             case AttributeTypes.WILDCARD:
             case AttributeTypes.MARKDOWN:
-                return "String"
+                return "String";
             case AttributeTypes.NUMERIC:
-                return "Number"
+                return "Number";
             case AttributeTypes.BOOLEAN:
-                return "Boolean"
+                return "Boolean";
         }
+    }
+
+    static getTypeFormatted(name) {
+        return camelcase(name, {pascalCase: true});
     }
 
     getTypeDefault(attribute) {
@@ -25,7 +28,7 @@ export class Kotlin extends Language {
             return "null";
         }
         if (attribute.array) {
-            return `listOf<${this.getType(attribute.type)}>()`;
+            return `listOf<${Kotlin.getType(attribute.type)}>()`;
         }
         switch (attribute.type) {
             case AttributeTypes.TEXT:
@@ -43,18 +46,6 @@ export class Kotlin extends Language {
     }
 
     getFileExtension() {
-        return ".kt"
-    }
-
-    getTypeOpenLine(name) {
-        return `data class ${camelCase(name, {pascalCase: true})} (\n`
-    }
-
-    getTypePropertyLine(attribute) {
-        return `\t${attribute.name}: ${attribute.array ? "List<" : ""}${this.getType(attribute.type) ?? "Any"}${attribute.array ? ">" : ""}${attribute.required ? "" : "?"}${attribute.required ? "" : ` = ${this.getTypeDefault(attribute)}`},\n`;
-    }
-
-    getTypeCloseLine() {
-        return ")\n"
+        return ".kt";
     }
 }

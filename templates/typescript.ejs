@@ -1,0 +1,7 @@
+export type <%= getTypeFormatted(name) %> = {
+<%_ attributes.forEach(attribute => { -%>
+    <%= attribute.name _%>
+    <%_ if (!attribute.required) { -%>?<% } -%>: <%- getType(attribute.type) ?? 'unknown' -%>
+    <%_ if (attribute.array) { -%>[]<% } -%>;
+<% }); -%>
+}

@@ -1,0 +1,5 @@
+data class <%= getTypeFormatted(name) %> = {
+<%_ attributes.forEach(attribute => { -%>
+    <%= attribute.name _%>: <% if (attribute.array) { -%>List<<%= getType(attribute.type) ?? 'Any' -%>><%_ } else { -%><%- getType(attribute.type) ?? 'Any' -%><% } _%><%_ if (!attribute.required) { -%>? = null<% } -%>,
+<% }); -%>
+}
